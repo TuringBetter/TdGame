@@ -80,7 +80,7 @@ GameManager::GameManager()
 	* SDL_RENDERER_PRESENTVSYNC:垂直同步
 	* SDL_RENDERER_TARGETTEXTURE:先把内容画到一张纹理上
 	**/
-	SDL_Renderer* render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
+	render = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_TARGETTEXTURE);
 	init_assert(render, u8"创建渲染失败！");
 
 	init_assert(ResourceManager::GetInstance()->load_from_file(render), u8"加载游戏资源失败");
@@ -156,7 +156,7 @@ bool GameManager::generate_tile_map_texture()
 	tex_tile_map = SDL_CreateTexture(render, SDL_PIXELFORMAT_ABGR8888,
 		SDL_TEXTUREACCESS_TARGET, width_tex_tile_map, height_tex_tile_map);
 
-	if (tex_tile_map) return false;
+	if (!tex_tile_map) return false;
 
 	/* 将画布居中 */
 	auto config = ConfigManager::GetInstance();
