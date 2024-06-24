@@ -57,14 +57,14 @@ bool Map::load(const std::string& path)
     file.close();
 
     /* 如果地图为空，则返回错误 */
-    if (tile_map_tmp.size() || tile_map_tmp[0].empty())
+    if (tile_map_tmp.size()<=0 || tile_map_tmp[0].empty())
         return false;
 
     tile_map = tile_map_tmp;
 
     generate_map_cache();
 
-    return false;
+    return true;
 }
 
 /**

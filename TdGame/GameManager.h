@@ -1,5 +1,8 @@
 #pragma once
 #include "Manager.h"
+#include "ConfigManager.h"
+#include "ResourceManager.h"
+
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -30,6 +33,9 @@ private:
     SDL_Window* window = nullptr;
     SDL_Renderer* render = nullptr;
 
+    /* ÐÂµÄ»­²¼ */
+    SDL_Texture* tex_tile_map = nullptr;
+
     SDL_Event event;
     bool is_quit = false;
 private:
@@ -39,5 +45,6 @@ private:
     void on_update(double delta);
     void on_render();
 
+    bool generate_tile_map_texture();
 };
 

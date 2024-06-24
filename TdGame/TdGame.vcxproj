@@ -104,12 +104,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_mixer\include;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_image\include;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_gfx\include;D:\workspace\study\C\project\TdGame\ThirdParty\cJSON\include;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_ttf\include;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ThirdParty\SDL2_mixer\include;..\ThirdParty\SDL2_image\include;..\ThirdParty\SDL2_gfx\include;..\ThirdParty\cJSON\include;..\ThirdParty\SDL2_ttf\include;..\ThirdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_mixer\lib\x64;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_ttf\lib\x64;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_image\lib\x64;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2_gfx\lib\x64;D:\workspace\study\C\project\TdGame\ThirdParty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\ThirdParty\SDL2_mixer\lib\x64;..\ThirdParty\SDL2_ttf\lib\x64;..\ThirdParty\SDL2_image\lib\x64;..\ThirdParty\SDL2_gfx\lib\x64;..\ThirdParty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_gfx.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -131,19 +131,24 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\ThirdParty\cJSON\cJSON.c" />
     <ClCompile Include="ConfigManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Route.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConfigManager.h" />
+    <ClInclude Include="EnemyType.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Route.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Wave.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

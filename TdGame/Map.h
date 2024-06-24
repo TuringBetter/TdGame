@@ -33,9 +33,9 @@ public:
 
 private:
 	TileMap tile_map;
+
 	/* »º´æµØÍ¼Êý¾Ý */
 	SDL_Point idx_home = { 0 };
-
 	SpawnerRoutePool spawner_route_pool;
 private:
 	std::string trim_str(const std::string& str);

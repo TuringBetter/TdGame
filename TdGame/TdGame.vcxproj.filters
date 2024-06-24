@@ -19,6 +19,9 @@
     <Filter Include="源文件\Manager">
       <UniqueIdentifier>{ee29fd14-824a-4761-bf95-65092c8b1ab4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\cJSON">
+      <UniqueIdentifier>{97d08e44-5be6-4be1-a3f4-684f02e7ed7d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -34,6 +37,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ConfigManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\ThirdParty\cJSON\cJSON.c">
+      <Filter>源文件\cJSON</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
       <Filter>源文件\Manager</Filter>
     </ClCompile>
   </ItemGroup>
@@ -54,6 +63,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ConfigManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyType.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Wave.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
       <Filter>头文件\Manager</Filter>
     </ClInclude>
   </ItemGroup>
