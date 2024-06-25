@@ -132,23 +132,49 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\cJSON\cJSON.c" />
+    <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="CoinManager.cpp" />
     <ClCompile Include="ConfigManager.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
+    <ClCompile Include="GoblinEnemy.cpp" />
+    <ClCompile Include="GoblinPriestEnemy.cpp" />
+    <ClCompile Include="HomeManager.cpp" />
+    <ClCompile Include="KingSlimEnemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Route.cpp" />
+    <ClCompile Include="SkeletonEnemy.cpp" />
+    <ClCompile Include="SlimEnemy.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Vector2.cpp" />
+    <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
+    <ClInclude Include="CoinManager.h" />
     <ClInclude Include="ConfigManager.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyType.h" />
     <ClInclude Include="GameManager.h" />
+    <ClInclude Include="GoblinEnemy.h" />
+    <ClInclude Include="GoblinPriestEnemy.h" />
+    <ClInclude Include="HomeManager.h" />
+    <ClInclude Include="KingSlimEnemy.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Route.h" />
+    <ClInclude Include="SkeletonEnemy.h" />
+    <ClInclude Include="SlimEnemy.h" />
     <ClInclude Include="Tile.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Vector2.h" />
     <ClInclude Include="Wave.h" />
+    <ClInclude Include="WaveManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

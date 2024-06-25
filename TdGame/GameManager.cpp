@@ -108,6 +108,12 @@ void GameManager::on_input()
 
 void GameManager::on_update(double delta)
 {
+	static auto instance = ConfigManager::GetInstance();
+	if(!instance->is_game_over)
+	{
+		WaveManager::GetInstance()->on_update(delta);
+		EnemyManager::GetInstance()->on_update(delta);
+	}
 }
 
 void GameManager::on_render()
@@ -115,6 +121,8 @@ void GameManager::on_render()
 	static auto config = ConfigManager::GetInstance();
 	static SDL_Rect& rect_dst = config->rect_tile_map;
 	SDL_RenderCopy(render, tex_tile_map, nullptr, &rect_dst);
+
+	EnemyManager::GetInstance()->on_render(render);
 }
 /**
  * @brief       Éú³ÉÍßÆ¬Í¼ÎÆÀí

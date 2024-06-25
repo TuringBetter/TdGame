@@ -13,7 +13,8 @@
 
 #include <cJSON.h>
 
-class ConfigManager:
+class ConfigManager
+	:
 	public Manager<ConfigManager>
 {
 	friend class Manager<ConfigManager>;

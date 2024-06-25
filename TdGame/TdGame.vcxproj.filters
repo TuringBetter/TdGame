@@ -22,6 +22,12 @@
     <Filter Include="源文件\cJSON">
       <UniqueIdentifier>{97d08e44-5be6-4be1-a3f4-684f02e7ed7d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="源文件\Enemy">
+      <UniqueIdentifier>{a2462880-1d52-4631-bf89-33d36ff60c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Enemy">
+      <UniqueIdentifier>{d203d8f3-9afd-45b4-b9ec-b9af4df46376}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +51,45 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>源文件\Manager</Filter>
     </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Animation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>源文件\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector2.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SlimEnemy.cpp">
+      <Filter>源文件\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="KingSlimEnemy.cpp">
+      <Filter>源文件\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GoblinEnemy.cpp">
+      <Filter>源文件\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="SkeletonEnemy.cpp">
+      <Filter>源文件\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="GoblinPriestEnemy.cpp">
+      <Filter>源文件\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="HomeManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="WaveManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Manager.h">
@@ -65,14 +110,53 @@
     <ClInclude Include="ConfigManager.h">
       <Filter>头文件\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyType.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="Wave.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyType.h">
+      <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector2.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SlimEnemy.h">
+      <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="KingSlimEnemy.h">
+      <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GoblinEnemy.h">
+      <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="GoblinPriestEnemy.h">
+      <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="HomeManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="WaveManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="SkeletonEnemy.h">
+      <Filter>头文件\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

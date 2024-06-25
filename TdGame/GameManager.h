@@ -2,6 +2,8 @@
 #include "Manager.h"
 #include "ConfigManager.h"
 #include "ResourceManager.h"
+#include "WaveManager.h"
+#include "EnemyManager.h"
 
 #include <SDL.h>
 #include <SDL_image.h>
