@@ -28,6 +28,30 @@
     <Filter Include="头文件\Enemy">
       <UniqueIdentifier>{d203d8f3-9afd-45b4-b9ec-b9af4df46376}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\bullet">
+      <UniqueIdentifier>{328f7542-d87d-4ea6-b34a-e826a0b2ae0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\bullet">
+      <UniqueIdentifier>{96fa8c46-ef71-45d0-acbf-db927849f72e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Tower">
+      <UniqueIdentifier>{1219b1db-20a5-473e-a939-332a188c6703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Tower">
+      <UniqueIdentifier>{3c1a4e36-ca56-4f04-876f-65e8a52eafb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UI">
+      <UniqueIdentifier>{a75b9d24-172d-44db-9743-c4f40e8f6e5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\UI\Panel">
+      <UniqueIdentifier>{d70bb55a-e3a1-4216-86db-35d98feed711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\UI">
+      <UniqueIdentifier>{cf4383d4-3c3f-446c-baa8-1e5bcf00c445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\UI\Panel">
+      <UniqueIdentifier>{cf26b501-6061-4397-9065-07935c108b1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -89,6 +113,57 @@
     </ClCompile>
     <ClCompile Include="CoinManager.cpp">
       <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>源文件\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="ArrowBullet.cpp">
+      <Filter>源文件\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="AxeBullet.cpp">
+      <Filter>源文件\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellBullet.cpp">
+      <Filter>源文件\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="BulletManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="Tower.cpp">
+      <Filter>源文件\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="ArcherTower.cpp">
+      <Filter>源文件\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="AxemanTower.cpp">
+      <Filter>源文件\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="GunnerTower.cpp">
+      <Filter>源文件\Tower</Filter>
+    </ClCompile>
+    <ClCompile Include="TowerManager.cpp">
+      <Filter>源文件\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinProp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="PlacePanel.cpp">
+      <Filter>源文件\UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="Panel.cpp">
+      <Filter>源文件\UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="UpgradePanel.cpp">
+      <Filter>源文件\UI\Panel</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerManager.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StatusBar.cpp">
+      <Filter>源文件\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Banner.cpp">
+      <Filter>源文件\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +232,66 @@
     </ClInclude>
     <ClInclude Include="SkeletonEnemy.h">
       <Filter>头文件\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>头文件\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="ArrowBullet.h">
+      <Filter>头文件\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="AxeBullet.h">
+      <Filter>头文件\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="ShellBullet.h">
+      <Filter>头文件\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletType.h">
+      <Filter>头文件\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="BulletManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerType.h">
+      <Filter>头文件\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="Facing.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Tower.h">
+      <Filter>头文件\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="ArcherTower.h">
+      <Filter>头文件\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="AxemanTower.h">
+      <Filter>头文件\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="GunnerTower.h">
+      <Filter>头文件\Tower</Filter>
+    </ClInclude>
+    <ClInclude Include="TowerManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinProp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="PlacePanel.h">
+      <Filter>头文件\UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="Panel.h">
+      <Filter>头文件\UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="UpgradePanel.h">
+      <Filter>头文件\UI\Panel</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerManager.h">
+      <Filter>头文件\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="StatusBar.h">
+      <Filter>头文件\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Banner.h">
+      <Filter>头文件\UI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

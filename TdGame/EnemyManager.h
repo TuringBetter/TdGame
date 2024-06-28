@@ -4,6 +4,7 @@
 #include "ConfigManager.h"
 #include "HomeManager.h"
 #include "CoinManager.h"
+#include "BulletManager.h"
 
 #include <vector>
 #include <SDL.h>
@@ -24,6 +25,8 @@ public:
 	void spawn_enemy(EnemyType type, int idx_spawn_point);
 
 	bool check_clear();
+
+	EnemyList& get_enemy_list();
 private:
 	EnemyList enemy_list;
 
@@ -33,5 +36,6 @@ private:
 	void process_home_collision();
 	void process_bullet_collision();
 	void remove_invalid_enemy();
+	void try_spawn_coin_prop(const Vector2& position,double ratio);
 };
 

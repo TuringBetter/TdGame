@@ -97,7 +97,7 @@ void Enemy::on_render(SDL_Renderer* render)
 		/* 设置血条位置 */
 		rect_hp_bar.x = (int)(position.x - size_hp_bar.x / 2);
 		rect_hp_bar.y = (int)(position.y - size.y / 2 - size_hp_bar.y - offset_y);
-		rect_hp_bar.w = (int)size_hp_bar.x * (hp / max_hp);
+		rect_hp_bar.w = (int)(size_hp_bar.x * (hp / max_hp));
 		rect_hp_bar.h = (int)size_hp_bar.y;
 
 		/* 绘制血条 */
@@ -214,7 +214,7 @@ double Enemy::get_route_process() const
 
 void Enemy::refresh_position_target()
 {
-	static const Route::IdxList& idx_list = route->get_idx_list();
+	const Route::IdxList& idx_list = route->get_idx_list();
 
 	if(idx_target<idx_list.size())
 	{

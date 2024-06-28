@@ -110,6 +110,11 @@ bool EnemyManager::check_clear()
 	return enemy_list.empty();
 }
 
+EnemyManager::EnemyList& EnemyManager::get_enemy_list()
+{
+	return enemy_list;
+}
+
 void EnemyManager::process_home_collision()
 {
 	static const SDL_Point& idx_home = ConfigManager::GetInstance()->map.get_home_point();
@@ -140,6 +145,61 @@ void EnemyManager::process_home_collision()
 
 void EnemyManager::process_bullet_collision()
 {
+	static BulletManager::BulletList& bullet_list
+		= BulletManager::GetInstance()->get_bullet_list();
+
+	for (Enemy* enemy: enemy_list)
+	{
+		if (enemy->can_remove())
+			continue;
+		
+		const Vector2& pos_enemy = enemy->get_position();
+		const Vector2& size_enemy = enemy->get_size();
+
+		for(Bullet* bullet:bullet_list)
+		{
+			if (!bullet->can_collide())
+				continue;
+
+			const Vector2& pos_bullet = bullet->get_position();
+
+			if (pos_bullet.x >= pos_enemy.x - size_enemy.x / 2
+			&& pos_bullet.y >= pos_enemy.y - size_enemy.y / 2
+			&& pos_bullet.x <= pos_enemy.x + size_enemy.x / 2
+			&& pos_bullet.y <= pos_enemy.y + size_enemy.y / 2)
+			{
+				double damage = bullet->get_damage();
+				double damage_range = bullet->get_damage_range();
+
+				if(damage_range<=0)
+				{
+					enemy->decrease_hp(damage);
+
+					if (enemy->can_remove())
+						try_spawn_coin_prop(pos_enemy, enemy->get_reward_ratio());
+
+				}
+				else
+				{
+					for (Enemy* target_enemy : enemy_list)
+					{
+						const Vector2& pos_target_enemy = target_enemy->get_position();
+
+						double distance = (pos_bullet - pos_target_enemy).length();
+						if (distance <= damage_range)
+						{
+							target_enemy->decrease_hp(damage);
+							if (target_enemy->can_remove())
+								try_spawn_coin_prop(pos_target_enemy, target_enemy->get_reward_ratio());
+						}
+					}
+				}
+				/* Axe»á¼õËÙµÐÈË */
+				bullet->on_collide(enemy);
+			}
+		}
+
+	}
 }
 
 void EnemyManager::remove_invalid_enemy()
@@ -151,4 +211,13 @@ void EnemyManager::remove_invalid_enemy()
 			if (deletable) delete enemy;
 			return deletable;
 		}), enemy_list.end());
+}
+
+void EnemyManager::try_spawn_coin_prop(const Vector2& position, double ratio)
+{
+	static auto instance = CoinManager::GetInstance();
+
+	if ((double)(rand() % 100) / 100 <= ratio)
+		instance->spawn_coin_prop(position);
+
 }

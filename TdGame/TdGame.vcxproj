@@ -122,56 +122,96 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\ThirdParty\SDL2_mixer\include;..\ThirdParty\SDL2_image\include;..\ThirdParty\SDL2_gfx\include;..\ThirdParty\cJSON\include;..\ThirdParty\SDL2_ttf\include;..\ThirdParty\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>..\ThirdParty\SDL2_mixer\lib\x64;..\ThirdParty\SDL2_ttf\lib\x64;..\ThirdParty\SDL2_image\lib\x64;..\ThirdParty\SDL2_gfx\lib\x64;..\ThirdParty\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_gfx.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\ThirdParty\cJSON\cJSON.c" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="ArcherTower.cpp" />
+    <ClCompile Include="ArrowBullet.cpp" />
+    <ClCompile Include="AxeBullet.cpp" />
+    <ClCompile Include="AxemanTower.cpp" />
+    <ClCompile Include="Banner.cpp" />
+    <ClCompile Include="Bullet.cpp" />
+    <ClCompile Include="BulletManager.cpp" />
     <ClCompile Include="CoinManager.cpp" />
+    <ClCompile Include="CoinProp.cpp" />
     <ClCompile Include="ConfigManager.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GoblinEnemy.cpp" />
     <ClCompile Include="GoblinPriestEnemy.cpp" />
+    <ClCompile Include="GunnerTower.cpp" />
     <ClCompile Include="HomeManager.cpp" />
     <ClCompile Include="KingSlimEnemy.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="PlacePanel.cpp" />
+    <ClCompile Include="PlayerManager.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Route.cpp" />
+    <ClCompile Include="ShellBullet.cpp" />
     <ClCompile Include="SkeletonEnemy.cpp" />
     <ClCompile Include="SlimEnemy.cpp" />
+    <ClCompile Include="StatusBar.cpp" />
     <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Tower.cpp" />
+    <ClCompile Include="TowerManager.cpp" />
+    <ClCompile Include="UpgradePanel.cpp" />
     <ClCompile Include="Vector2.cpp" />
     <ClCompile Include="WaveManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="ArcherTower.h" />
+    <ClInclude Include="ArrowBullet.h" />
+    <ClInclude Include="AxeBullet.h" />
+    <ClInclude Include="AxemanTower.h" />
+    <ClInclude Include="Banner.h" />
+    <ClInclude Include="Bullet.h" />
+    <ClInclude Include="BulletManager.h" />
+    <ClInclude Include="BulletType.h" />
     <ClInclude Include="CoinManager.h" />
+    <ClInclude Include="CoinProp.h" />
     <ClInclude Include="ConfigManager.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="EnemyType.h" />
+    <ClInclude Include="Facing.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GoblinEnemy.h" />
     <ClInclude Include="GoblinPriestEnemy.h" />
+    <ClInclude Include="GunnerTower.h" />
     <ClInclude Include="HomeManager.h" />
     <ClInclude Include="KingSlimEnemy.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Panel.h" />
+    <ClInclude Include="PlacePanel.h" />
+    <ClInclude Include="PlayerManager.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Route.h" />
+    <ClInclude Include="ShellBullet.h" />
     <ClInclude Include="SkeletonEnemy.h" />
     <ClInclude Include="SlimEnemy.h" />
+    <ClInclude Include="StatusBar.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Timer.h" />
+    <ClInclude Include="Tower.h" />
+    <ClInclude Include="TowerManager.h" />
+    <ClInclude Include="TowerType.h" />
+    <ClInclude Include="UpgradePanel.h" />
     <ClInclude Include="Vector2.h" />
     <ClInclude Include="Wave.h" />
     <ClInclude Include="WaveManager.h" />

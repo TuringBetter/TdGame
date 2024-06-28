@@ -31,7 +31,7 @@ void WaveManager::on_update(double delta)
 		else
 		{
 			idx_spawn_event = 0;
-			is_wave_start = true;
+			is_wave_start = false;
 			is_spawned_last_enemy = false;
 
 			const Wave& wave = instance->wave_list[idx_wave];

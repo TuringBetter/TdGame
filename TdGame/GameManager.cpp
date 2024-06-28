@@ -4,6 +4,10 @@
 
 int GameManager::run(int argc, char** argv)
 {
+	//TowerManager::GetInstance()->place_tower(TowerType::Archer, { 6,9 });
+
+	Mix_FadeInMusic(ResourceManager::GetInstance()->get_music_pool().find(ResID::Music_BGM)->second, -1, 1500);
+
 	Uint64 last_counter = SDL_GetPerformanceCounter();
 	const Uint64 counter_freq = SDL_GetPerformanceFrequency();
 
@@ -42,6 +46,11 @@ GameManager::~GameManager()
 	/*
 	* 析构的顺序要与初始化的顺序相反
 	*/
+	delete banner;
+
+	delete upgrade_panel;
+	delete place_panel;
+
 	SDL_DestroyRenderer(render);
 	SDL_DestroyWindow(window);
 
@@ -88,11 +97,12 @@ GameManager::GameManager()
 	init_assert(generate_tile_map_texture(), u8"渲染地图失败");
 
 
-	/* 打印map数据 */
-	/* 先打印idx_home */
-	//std::cout << "map中的idx_home数据:" << std::endl;
-	//std::cout << "idx_home.x=:"<< config->map.get_width() <<"  "<< "idx_home.y=:" << config->map.get_height()<<std::endl;
+	status_bar.set_position(15, 15);
 	
+	place_panel = new PlacePanel();
+	upgrade_panel = new UpgradePanel();
+
+	banner = new Banner();
 }
 
 void GameManager::init_assert(bool flag, const char* err_msg)
@@ -104,25 +114,108 @@ void GameManager::init_assert(bool flag, const char* err_msg)
 
 void GameManager::on_input()
 {
+	static SDL_Point pos_center;
+	static SDL_Point idx_tile_selected;
+	static auto instance = ConfigManager::GetInstance();
+
+	switch (event.type)
+	{
+	case SDL_QUIT:
+		is_quit = true;
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		if (instance->is_game_over)return;
+		if(get_cursor_idx_tile(idx_tile_selected,event.button.x,event.motion.y))
+		{
+			get_selected_tile_center_pos(pos_center, idx_tile_selected);
+
+			if(check_home(idx_tile_selected))
+			{
+				upgrade_panel->set_idx_tile(idx_tile_selected);
+				upgrade_panel->set_center_pos(pos_center);
+				upgrade_panel->show();
+			}
+			else if (can_place_tower(idx_tile_selected))
+			{
+				place_panel->set_idx_tile(idx_tile_selected);
+				place_panel->set_center_pos(pos_center);
+				place_panel->show();
+			}
+		}
+		break;
+	default:
+		break;
+	}
+
+	if(!instance->is_game_over)
+	{
+		place_panel->on_input(event);
+		upgrade_panel->on_input(event);
+		PlayerManager::GetInstance()->on_input(event);
+	}
 }
 
 void GameManager::on_update(double delta)
 {
+	/* 游戏结束是播放结束音效，则需要获取游戏结束时的前一帧 */
+	static bool is_game_over_last_tick = false;
+
 	static auto instance = ConfigManager::GetInstance();
 	if(!instance->is_game_over)
 	{
+		status_bar.on_update(render);
+		place_panel->on_update(render);
+		upgrade_panel->on_update(render);
 		WaveManager::GetInstance()->on_update(delta);
 		EnemyManager::GetInstance()->on_update(delta);
+		BulletManager::GetInstance()->on_update(delta);
+		TowerManager::GetInstance()->on_update(delta);
+		PlayerManager::GetInstance()->on_update(delta);
+		CoinManager::GetInstance()->on_update(delta);
+		return;
 	}
+
+	if(!is_game_over_last_tick&&instance->is_game_over)
+	{
+		static const ResourceManager::SoundPool& sound_pool
+			= ResourceManager::GetInstance()->get_sound_pool();
+
+		Mix_FadeOutMusic(1500);
+		Mix_PlayChannel(-1, sound_pool.find(instance->is_game_win?ResID::Sound_win:ResID::Sound_Loss)->second, 0);
+	}
+
+	is_game_over_last_tick = instance->is_game_over;
+
+	banner->on_update(delta);
+	if(banner->check_end_display())
+		is_quit = true;
 }
 
 void GameManager::on_render()
 {
+
 	static auto config = ConfigManager::GetInstance();
 	static SDL_Rect& rect_dst = config->rect_tile_map;
 	SDL_RenderCopy(render, tex_tile_map, nullptr, &rect_dst);
 
 	EnemyManager::GetInstance()->on_render(render);
+	BulletManager::GetInstance()->on_render(render);
+	TowerManager::GetInstance()->on_render(render);
+	PlayerManager::GetInstance()->on_render(render);
+	CoinManager::GetInstance()->on_render(render);
+	if (!config->is_game_over)
+	{
+		place_panel->on_render(render);
+		upgrade_panel->on_render(render);
+		status_bar.on_render(render);
+
+		return;
+	}
+
+	int width_screen, height_screen; 
+	SDL_GetWindowSizeInPixels(window, &width_screen, &height_screen); 
+	banner->set_center_position({ (double)width_screen / 2,(double)height_screen / 2 });
+	banner->on_render(render);
 }
 /**
  * @brief       生成瓦片图纹理
@@ -235,4 +328,63 @@ bool GameManager::generate_tile_map_texture()
 
 	return true;
 
+}
+
+/**
+ * @brief       将鼠标点击的位置转化为地图索引
+ *
+ * @param[in]	screen_x: 鼠标x点
+ * @param[in]	screen_y: 鼠标点
+ * @param[out]  idx_tile_selected：地图索引
+ * 
+ * @return		true  :  当前鼠标有点击地图
+ *				false ： 当前鼠标没有点击地图
+ */
+bool GameManager::get_cursor_idx_tile(SDL_Point& idx_tile_selected, int screen_x, int screen_y)
+{
+	static const Map& map = ConfigManager::GetInstance()->map;
+	static const SDL_Rect& rect_tile_map = ConfigManager::GetInstance()->rect_tile_map;
+
+	/* 考虑到地图没有铺满整个窗口的情况 */
+	if (screen_x<rect_tile_map.x || screen_x>rect_tile_map.x + rect_tile_map.w
+		|| screen_y<rect_tile_map.y || screen_y>rect_tile_map.y + rect_tile_map.h)
+		return false;
+	/* 
+	* int整除，自动舍弃小数部分即可地图索引
+	* 但是要考虑到右、下边界
+	*/
+	idx_tile_selected.x = std::min((screen_x - rect_tile_map.x) / SIZE_TILE, (int)map.get_width() - 1);
+	idx_tile_selected.y = std::min((screen_y - rect_tile_map.y) / SIZE_TILE, (int)map.get_height() - 1);
+
+	return true;
+}
+
+bool GameManager::can_place_tower(const SDL_Point& idx_tile_selected) const
+{
+	static const Map& map = ConfigManager::GetInstance()->map;
+	const Tile& tile = map.get_tile_map()[idx_tile_selected.y][idx_tile_selected.x];
+
+	/*
+	* 1、瓦片上没有装饰物
+	* 2、不在怪物行进路线上
+	* 3、瓦片上没有防御塔
+	*/
+	return (tile.decoration < 0 && tile.direction == Tile::Direction::None && !tile.has_tower);
+}
+
+
+void GameManager::get_selected_tile_center_pos(SDL_Point& pos, const SDL_Point& idx_tile_selected)
+{
+	static const SDL_Rect& rect_tile_map = ConfigManager::GetInstance()->rect_tile_map;
+
+	pos.x = rect_tile_map.x + idx_tile_selected.x * SIZE_TILE + SIZE_TILE / 2;
+	pos.y = rect_tile_map.y + idx_tile_selected.y * SIZE_TILE + SIZE_TILE / 2;
+}
+
+bool GameManager::check_home(const SDL_Point& idx_tile_selected)
+{
+	static const Map& map = ConfigManager::GetInstance()->map;
+	static const SDL_Point& idx_home = map.get_home_point();
+
+	return (idx_tile_selected.x == idx_home.x) && (idx_tile_selected.y == idx_home.y);
 }

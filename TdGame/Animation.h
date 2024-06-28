@@ -21,7 +21,7 @@ public:
 	~Animation() = default;
 
 	void reset();
-	void set_frame_date(SDL_Texture* texture, int num_h, int num_v, const std::vector<int>& idx_list);
+	void set_frame_data(SDL_Texture* texture, int num_h, int num_v, const std::vector<int>& idx_list);
 	void set_loop(bool flag);
 	void set_interval(double interval);
 	void set_callback(PlayCallback callback);

@@ -1,4 +1,6 @@
 #pragma once
+#include <cmath>
+#define _USE_MATH_DEFINE
 class Vector2
 {
 public:

@@ -24,7 +24,7 @@ void Animation::reset()
 	timer.restart();
 }
 
-void Animation::set_frame_date(SDL_Texture* texture, int num_h, int num_v, const std::vector<int>& idx_list)
+void Animation::set_frame_data(SDL_Texture* texture, int num_h, int num_v, const std::vector<int>& idx_list)
 {
 	int width_tex, height_tex;
 	this->texture = texture;
@@ -78,5 +78,5 @@ void Animation::on_render(SDL_Renderer* render, const SDL_Point& pos_dst, double
 	* rect_src_list[idx_frame] 要取动画图集的哪一个素材
 	* rect_dst 要画到画布的位置
 	*/
-	SDL_RenderCopyEx(render, texture, &rect_src_list[idx_frame], &rect_dst, 0, nullptr, SDL_RendererFlip::SDL_FLIP_NONE);
+	SDL_RenderCopyEx(render, texture, &rect_src_list[idx_frame], &rect_dst, angle, nullptr, SDL_RendererFlip::SDL_FLIP_NONE);
 }

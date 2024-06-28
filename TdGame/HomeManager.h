@@ -15,8 +15,8 @@ public:
     void decrease_hp(double val);
 
 private:
-    double num_hp = 0;
+    double num_hp = 10;
 private:
-    HomeManager();
+    HomeManager()=default;
 };
 
